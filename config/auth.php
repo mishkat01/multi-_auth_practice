@@ -35,12 +35,21 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-    ],
+      // config/auth.php
+
+
+      'guards' => [
+          'admin' => [
+              'driver' => 'session',
+              'provider' => 'admins',
+          ],
+          'writer' => [
+              'driver' => 'session',
+              'provider' => 'writers',
+          ],
+      ],
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -59,17 +68,22 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+      // config/auth.php
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
+
+      'providers' => [
+
+          'admins' => [
+              'driver' => 'eloquent',
+              'model' => App\Admin::class,
+          ],
+          'writers' => [
+              'driver' => 'eloquent',
+              'model' => App\Writer::class,
+          ],
+      ],
+     
+
 
     /*
     |--------------------------------------------------------------------------
